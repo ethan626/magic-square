@@ -1,5 +1,4 @@
-;;;;;;;;;;;; Evolution Algorithm To Solve Magic Squares ;;;;;;;;;;;;;; 
-;; (load "ethan.fas") 
+;;;;;;;;;;;; Evolution Algorithm To Solve Magic Squares ;;;;;;;;;;;;;;
 
 (proclaim '(optimize-speed))
 
@@ -115,10 +114,11 @@
 				
 				(if (= num-of-crosses i)(setf end square-len))
 				
-				(setf doubles (append doubles (intersection gene new-chrome)))
-				(setf gene (subseq parent start end))
-				(setf rpl-list (elements-not-in square-size new-chrome gene))
-				(setf gene (replace-doubles gene nil)  new-chrome (append new-chrome gene))
+				(setf doubles (append doubles (intersection gene new-chrome))
+				      gene (subseq parent start end)
+				      rpl-list (elements-not-in square-size new-chrome gene)
+				      gene (replace-doubles gene nil)  new-chrome (append new-chrome gene)
+				      
 				(incf start step-size)
 				(incf end step-size)
 				
@@ -154,7 +154,6 @@
 	  
 	  
 	  (setf generation (sort-by-fitness generation magic-num square-size))
-	  (print generation)
 	  (print *solutions*)
 
 	  (setf generation (append
@@ -173,15 +172,3 @@
     *solutions*))
 
 (main-loop (make-generation 4000 3) 3)
-
-;;; Parses command line args and starts the program 
-;; (let ((size-of-square (parse-integer (nth 0 *args*)))
-;;       (generation-size (parse-integer (nth 1 *args*))))
-  
-;;  (main-loop (make-generation generation-size size-of-square) size-of-square))
-
-
-
-
-
- 

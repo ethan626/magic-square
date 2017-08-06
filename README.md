@@ -1,2 +1,5 @@
 # magic-square
-Genetic algorithm to solve magic squares
+
+This is a Genetic algorithm written in Common Lisp which solves nxn magic squares. 
+
+
